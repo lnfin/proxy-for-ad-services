@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  web:
+    build: .
+    container_name: proxy_web1
+    hostname: proxy_web1
+    restart: always
+    ports:
+      - "31337:9000"
+    volumes:
+      - ./src:/src
+    environment:
+      PYTHONUNBUFFERED: 1
+      PROXY_BIND_HTTPS: 0
+      PROXY_REMOTE_ADDR: 192.168.138.3
+      PROXY_REMOTE_PORT: 32400
+      PROXY_REMOTE_HTTPS: 0
+      PROXY_REMOTE_HTTPS_CHECK: 0
